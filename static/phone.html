@@ -187,7 +187,9 @@ body{
     <div class="row"><span class="row-label">Tên khách</span><span class="row-val" id="resName">—</span></div>
     <div class="row"><span class="row-label">Địa chỉ</span><span class="row-val" id="resAddress">—</span></div>
     <div class="row"><span class="row-label">Sản phẩm</span><span class="row-val" id="resProduct">—</span></div>
+    <div class="row"><span class="row-label">Số tiền TT</span><span class="row-val" id="resPrepaid">—</span></div>
     <div class="row"><span class="row-label">Thanh toán</span><span class="row-val" id="resPayment">—</span></div>
+    <div class="row"><span class="row-label">Nguồn đơn</span><span class="row-val" id="resSource">—</span></div>
 
     <div style="text-align:center" id="remainingWrap"></div>
   </div>
@@ -255,6 +257,8 @@ async function doSearch() {
     document.getElementById('resAddress').textContent = data.address     || '—';
     document.getElementById('resProduct').textContent = data.product     || '—';
     document.getElementById('resPayment').textContent = data.payment     || '—';
+    document.getElementById('resSource').textContent  = data.source         || '—';
+    document.getElementById('resPrepaid').textContent = data.prepaid_amount || '—';
 
     const wrap = document.getElementById('remainingWrap');
     if (data.remaining === -1) {
