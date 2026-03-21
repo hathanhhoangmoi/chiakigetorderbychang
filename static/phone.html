@@ -209,6 +209,42 @@ body{
 
     <div style="text-align:center" id="remainingWrap"></div>
   </div>
+    <!-- KHU VỰC HỦY ĐƠN HÀNG -->
+  <div class="result" id="cancelBox" style="margin-top:24px;border-top:1px solid rgba(248, 113, 113,.35)">
+    <div class="result-title">❌ Hủy đơn hàng</div>
+
+    <div class="field" style="margin-top:6px">
+      abel class="label">MÃ ĐƠN HÀNG CẦN HỦY</label>
+      <input class="inp inp-mono" id="cancelCode" type="text"
+             placeholder="VD: R8547883114"
+             onkeydown="if(event.key==='Enter')doCancel()"/>
+    </div>
+
+    <div class="field">
+      abel class="label">CANCEL KEY</label>
+      <input class="inp inp-mono" id="cancelKey" type="text"
+             placeholder="CANCEL-XXXXX-XXXXXX-XXXXX"
+             onkeydown="if(event.key==='Enter')doCancel()"/>
+    </div>
+
+    <button class="btn btn-pink" style="margin-top:8px;background:linear-gradient(135deg,#fecaca,#f97373)"
+            onclick="doCancel()">
+      🚫&nbsp; Gửi yêu cầu hủy đơn
+    </button>
+
+    <div id="cancelMsg" style="
+      margin-top:12px;
+      font-size:12px;
+      padding:10px 12px;
+      border-radius:10px;
+      display:none;
+      border:1px solid rgba(248,113,113,.3);
+      background:rgba(254,202,202,.4);
+      color:#991b1b;
+      line-height:1.5;
+    "></div>
+  </div>
+
 </div>
 <script>
 
@@ -325,6 +361,30 @@ window.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('lastPhoneKey');
   if (saved) document.getElementById('inpKey').value = saved;
 });
+function doCancel() {
+  const code = document.getElementById('cancelCode').value.trim();
+  const key  = document.getElementById('cancelKey').value.trim();
+  const box  = document.getElementById('cancelMsg');
+
+  if (!code || !key) {
+    box.style.display = 'block';
+    box.style.background = 'rgba(254,202,202,.4)';
+    box.style.color = '#991b1b';
+    box.innerHTML = 'Vui lòng nhập đầy đủ <b>Mã đơn</b> và <b>CANCEL KEY</b>.';
+    return;
+  }
+
+  box.style.display = 'block';
+  box.style.background = 'rgba(254,243,199,.6)';
+  box.style.color = '#92400e';
+  box.innerHTML = `
+    🚧 Chức năng <b>hủy đơn hàng</b> đang được hoàn thiện.<br/>
+    Mã đơn: <b>${code}</b><br/>
+    Cancel Key: <span style="font-family:monospace">${key}</span><br/><br/>
+    Vui lòng liên hệ đội vận hành để được hỗ trợ hủy đơn thủ công.
+  `;
+}
+
 </script>
 </body>
 </html>
