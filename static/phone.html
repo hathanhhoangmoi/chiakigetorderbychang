@@ -598,7 +598,7 @@ body{
              onkeydown="if(event.key==='Enter')doCancel()"/>
     </div>
 
-    <button class="btn btn-red" id="btnCancel" onclick="doCancel()">
+    <button class="btn btn-red" id="btnCancel" onclick="doCancel()"
       🚫&nbsp; GỬI YÊU CẦU HUỶ ĐƠN
     </button>
 
@@ -920,8 +920,8 @@ function copyPhone() {
 
 /* ── HUỶ ĐƠN ── */
 async function doCancel() {
-  const code = document.getElementById('cancel_Code').value.trim();
-  const key  = document.getElementById('cancel_Key').value.trim();
+  const code = document.getElementById('order_code').value.trim();
+  const key  = document.getElementById('cancel_key').value.trim();
   const box  = document.getElementById('cancelMsg');
   const btn  = document.getElementById('btnCancel');
 
