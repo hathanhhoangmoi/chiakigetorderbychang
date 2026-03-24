@@ -500,6 +500,25 @@ body{
 .transfer-overlay-sub {
   font-size: 12px; color: #9b8bb4; line-height: 1.7;
 }
+/* ── Retail packs ── */
+.retail-section-title {
+  font-size: 10px; font-weight: 800; color: #9b8bb4;
+  letter-spacing: .5px; text-transform: uppercase;
+  margin: 14px 0 8px; display: flex; align-items: center; gap: 6px;
+}
+.retail-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 4px;
+}
+.pack-retail {
+  border-radius: 12px; padding: 10px 12px; cursor: pointer;
+  transition: all .2s; border: 2px solid transparent;
+  background: rgba(249,168,212,.12);
+}
+.pack-retail:hover { transform: translateY(-1px); }
+.pack-retail.selected { border-color: #ec4899; box-shadow: 0 4px 14px rgba(236,72,153,.3); }
+.pack-retail-name { font-size: 11px; font-weight: 800; color: #be185d; margin-bottom: 3px; }
+.pack-retail-price { font-size: 16px; font-weight: 800; color: #7c3aed; line-height: 1; }
+.pack-retail-price span { font-size: 10px; font-weight: 500; color: #9b8bb4; }
 
 </style>
 </head>
@@ -721,20 +740,59 @@ body{
 <!-- ── PANEL MUA KEY ── -->
 <div class="key-shop-panel" id="keyShopPanel">
   <div class="key-shop-title">🛒 BUY KEY</div>
+  <!-- ── GÓI BÁN LẺ ── -->
+  <div class="retail-section-title">🛍️ Gói bán lẻ</div>
+  <div class="retail-grid">
+
+    <div class="pack-retail" id="pack-retail-phone10" onclick="selectPack('retail_phone10')">
+      <div class="pack-retail-name">10 PHONE-KEY</div>
+      <div class="pack-retail-price">99.999<span>đ</span></div>
+    </div>
+
+    <div class="pack-retail" id="pack-retail-cancel10" onclick="selectPack('retail_cancel10')">
+      <div class="pack-retail-name">10 CANCEL-KEY</div>
+      <div class="pack-retail-price">99.999<span>đ</span></div>
+    </div>
+
+    <div class="pack-retail" id="pack-retail-phone15" onclick="selectPack('retail_phone15')">
+      <div class="pack-retail-name">15 PHONE-KEY</div>
+      <div class="pack-retail-price">129.999<span>đ</span></div>
+    </div>
+
+    <div class="pack-retail" id="pack-retail-cancel15" onclick="selectPack('retail_cancel15')">
+      <div class="pack-retail-name">15 CANCEL-KEY</div>
+      <div class="pack-retail-price">129.999<span>đ</span></div>
+    </div>
+
+    <div class="pack-retail" id="pack-retail-phone20" onclick="selectPack('retail_phone20')">
+      <div class="pack-retail-name">20 PHONE-KEY</div>
+      <div class="pack-retail-price">169.999<span>đ</span></div>
+    </div>
+
+    <div class="pack-retail" id="pack-retail-cancel20" onclick="selectPack('retail_cancel20')">
+      <div class="pack-retail-name">20 CANCEL-KEY</div>
+      <div class="pack-retail-price">169.999<span>đ</span></div>
+    </div>
+
+  </div>
+  <div class="key-shop-divider" style="margin:12px 0;"></div>
+
+  <!-- ── GÓI COMBO ── -->
+  <div class="retail-section-title">📦 COMBO</div>
 
   <!-- BASIC -->
 <div class="pack-card pack-basic" id="pack-basic" onclick="selectPack('basic')">
   <div class="pack-name">BASIC PACK</div>
-  <div class="pack-old-price">999.999đ</div>
-  <div class="pack-price">599.999<span>đ</span>
-    <span class="pack-sale-badge">-40%</span>
+  <div class="pack-old-price">599.999đ</div>
+  <div class="pack-price">199.999<span>đ</span>
+    <span class="pack-sale-badge">-35%</span>
   </div>
   <div class="pack-features">
     <span class="pack-feat">10 PHONE-KEY</span>
     <span class="pack-feat">10 CANCEL-KEY</span>
     <span class="pack-feat zero">0 TRANSFER-KEY</span>
   </div>
-  <div class="pack-hsd">HSD 1 tuần</div>
+  <div class="pack-hsd">HSD: 1 tuần</div>
 </div>
 
 <!-- ADVANCE -->
@@ -749,7 +807,7 @@ body{
     <span class="pack-feat">50 CANCEL-KEY</span>
     <span class="pack-feat">20 TRANSFER-KEY</span>
   </div>
-  <div class="pack-hsd">HSD 1 tháng</div>
+  <div class="pack-hsd">HSD: 1 tháng</div>
 </div>
 
 <!-- PRO -->
@@ -1022,18 +1080,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* ── KEY SHOP ── */
 const PACKS = {
-  basic:     { name: 'BASIC PACK',         price: 599999,    info: 'BASIC' },
-  advance:   { name: 'ADVANCE PACK',       price: 1599999,   info: 'ADVANCE' },
-  pro:       { name: 'PRO PACK',           price: 2999999,   info: 'PRO' },
-  unlimited: { name: 'UNLIMITED MONTHLY',  price: 12000000,  info: 'UNLIMITED MONTHLY',
-               altPrice: 4000000,          altInfo: 'UNLIMITED WEEKLY' },
+  retail_phone10:  { name: '10 PHONE-KEY',       price: 99999,     info: 'PHONE10 SWC' },
+  retail_cancel10: { name: '10 CANCEL-KEY',      price: 99999,     info: 'CANCEL10 SWC' },
+  retail_phone15:  { name: '15 PHONE-KEY',       price: 129999,    info: 'PHONE15 SWC' },
+  retail_cancel15: { name: '15 CANCEL-KEY',      price: 129999,    info: 'CANCEL15 SWC' },
+  retail_phone20:  { name: '20 PHONE-KEY',       price: 169999,    info: 'PHONE20 SWC' },
+  retail_cancel20: { name: '20 CANCEL-KEY',      price: 169999,    info: 'CANCEL20 SWC' },
+  basic:           { name: 'BASIC PACK',         price: 599999,    info: 'BASIC' },
+  advance:         { name: 'ADVANCE PACK',       price: 1599999,   info: 'ADVANCE' },
+  pro:             { name: 'PRO PACK',           price: 2999999,   info: 'PRO' },
+  unlimited:       { name: 'UNLIMITED MONTHLY',  price: 12000000,  info: 'UNLIMITED MONTHLY',
+                     altPrice: 4000000,          altInfo: 'UNLIMITED WEEKLY' },
 };
 let selectedPack = null;
 
 function selectPack(id) {
   selectedPack = id;
-  document.querySelectorAll('.pack-card').forEach(el => el.classList.remove('selected'));
-  document.getElementById('pack-' + id).classList.add('selected');
+  document.querySelectorAll('.pack-card, .pack-retail').forEach(el => el.classList.remove('selected'));
+  const el = document.getElementById('pack-' + id) || document.getElementById('pack-retail-' + id.replace('retail_',''));
+  if (el) el.classList.add('selected');
   document.getElementById('qrWrap').style.display = 'none';
 }
 
