@@ -973,6 +973,21 @@ function closeShopOrders() {
       <div class="pack-retail-price">219.999<span>đ</span></div>
     </div>
 
+    <div class="pack-retail" id="pack-retail-order10" onclick="selectPack('retail_order10')">
+      <div class="pack-retail-name">10 GETORDER-KEY</div>
+      <div class="pack-retail-price">199.999<span>đ</span></div>
+    </div>
+
+    <div class="pack-retail" id="pack-retail-order15" onclick="selectPack('retail_order15')">
+      <div class="pack-retail-name">15 GETORDER-KEY</div>
+      <div class="pack-retail-price">229.999<span>đ</span></div>
+    </div>
+
+    <div class="pack-retail" id="pack-retail-order20" onclick="selectPack('retail_order20')">
+      <div class="pack-retail-name">20 GETORDER-KEY</div>
+      <div class="pack-retail-price">269.999<span>đ</span></div>
+    </div>
+
   </div>
   <div class="key-shop-divider" style="margin:12px 0;"></div>
 
@@ -990,6 +1005,7 @@ function closeShopOrders() {
     <span class="pack-feat">10 PHONE-KEY</span>
     <span class="pack-feat">10 CANCEL-KEY</span>
     <span class="pack-feat zero">0 TRANSFER-KEY</span>
+    <span class="pack-feat zero">0 GETORDER-KEY</span>
   </div>
   <div class="pack-hsd">HSD: 1 tuần</div>
 </div>
@@ -1005,6 +1021,7 @@ function closeShopOrders() {
     <span class="pack-feat">50 PHONE-KEY</span>
     <span class="pack-feat">50 CANCEL-KEY</span>
     <span class="pack-feat">20 TRANSFER-KEY</span>
+    <span class="pack-feat">5 GETORDER-KEY</span>
   </div>
   <div class="pack-hsd">HSD: 1 tháng</div>
 </div>
@@ -1021,6 +1038,7 @@ function closeShopOrders() {
     <span class="pack-feat">100 PHONE-KEY</span>
     <span class="pack-feat">100 CANCEL-KEY</span>
     <span class="pack-feat">50 TRANSFER-KEY</span>
+    <span class="pack-feat">10 GETORDER-KEY</span>
   </div>
   <div class="pack-hsd">HSD: Không giới hạn</div>
 </div>
@@ -1276,15 +1294,17 @@ window.addEventListener('DOMContentLoaded', () => {
   if (saved) document.getElementById('inpKey').value = saved;
 });
 
-
 /* ── KEY SHOP ── */
 const PACKS = {
-  retail_phone10:  { name: '10 PHONE-KEY',       price: 159999,     info: 'PHONE10 SWC' },
-  retail_cancel10: { name: '10 CANCEL-KEY',      price: 159999,     info: 'CANCEL10 SWC' },
-  retail_phone15:  { name: '15 PHONE-KEY',       price: 199999,    info: 'PHONE15 SWC' },
-  retail_cancel15: { name: '15 CANCEL-KEY',      price: 199999,    info: 'CANCEL15 SWC' },
-  retail_phone20:  { name: '20 PHONE-KEY',       price: 229999,    info: 'PHONE20 SWC' },
-  retail_cancel20: { name: '20 CANCEL-KEY',      price: 229999,    info: 'CANCEL20 SWC' },
+  retail_phone10:  { name: '10 PHONE-KEY',       price: 159999,     info: 'PHONE10' },
+  retail_cancel10: { name: '10 CANCEL-KEY',      price: 159999,     info: 'CANCEL10' },
+  retail_phone15:  { name: '15 PHONE-KEY',       price: 199999,    info: 'PHONE15' },
+  retail_cancel15: { name: '15 CANCEL-KEY',      price: 199999,    info: 'CANCEL15' },
+  retail_phone20:  { name: '20 PHONE-KEY',       price: 229999,    info: 'PHONE20' },
+  retail_cancel20: { name: '20 CANCEL-KEY',      price: 229999,    info: 'CANCEL20' },
+  retail_order10:  { name: '10 ORDER-KEY',       price: 199999,    info: 'ORDER10' },
+  retail_order15:  { name: '15 ORDER-KEY',       price: 229999,    info: 'ORDER15' },
+  retail_order20:  { name: '20 ORDER-KEY',       price: 269999,    info: 'ORDER20' },
   basic:           { name: 'BASIC PACK',         price: 599999,    info: 'BASIC' },
   advance:         { name: 'ADVANCE PACK',       price: 1599999,   info: 'ADVANCE' },
   pro:             { name: 'PRO PACK',           price: 2999999,   info: 'PRO' },
